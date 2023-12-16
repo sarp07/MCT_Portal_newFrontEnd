@@ -3,7 +3,11 @@ import Container from './container';
 import Logo from '../../images/logowithtext.png';
 import { FiMenu } from 'react-icons/fi';
 import { Link as ScrollLink } from 'react-scroll';
-import { ConnectWallet, useAddress } from '@thirdweb-dev/react';
+import {
+      ConnectWallet,
+      darkTheme,
+      useAddress
+    } from "@thirdweb-dev/react";
 import { AuthProvider, useAuth } from '../../AuthContext';
 import { useNavigate } from 'react-router-dom';
 
@@ -16,7 +20,7 @@ const Navbar = () => {
       const formattedAddress = address ? `${address.slice(0, 5)}...${address.slice(-3)}` : '';
 
       useEffect(() => {
-            fetch('http://localhost:3001/api/users')
+            fetch('http://193.17.4.100:3001/api/users')
                   .then((response) => response.json())
                   .then((data) => setExistingData(data))
                   .catch((error) => console.error('Error fetching data:', error));
@@ -79,29 +83,41 @@ const Navbar = () => {
                                           {checkWalletStatus()}
                                     </div>
                                     <ConnectWallet
-                                          auth={{
-                                                loginOptional: true,
-                                                onLogin(address) {
-                                                      login(address);
-                                                      console.log('user logged in', address);
+                                          theme={darkTheme({
+                                                colors: {
+                                                      modalBg: "#363636",
+                                                      dropdownBg: "#363636",
+                                                      borderColor: "#3385FF",
+                                                      accentText: "#0c0cb5",
+                                                      accentButtonBg: "#0c0cb5",
+                                                      separatorLine: "#363636",
+                                                      danger: "#e54d2e",
+                                                      primaryButtonBg: "#ededef",
+                                                      accentButtonText: "#ededef",
+                                                      primaryButtonText: "#7e7d86",
+                                                      secondaryButtonBg: "#22232b",
+                                                      secondaryButtonText: "#ededef",
+                                                      connectedButtonBgHover: "#1b1c22",
+                                                      skeletonBg: "#22232b",
                                                 },
-                                                onLogout() {
-                                                      logout();
-                                                      console.log('user logged out');
-                                                },
-                                          }}
-                                          detailsBtn={() => {
-                                                return <button style={{ background: '#EDEDEF', color: '#131418' }} className="px-6 py-2 text-white rounded-md">{formattedAddress}</button>;
-                                          }}
-                                          theme="dark" hideTestnetFaucet={true} switchToActiveChain={true}
+                                          })}
+                                          btnTitle={"Connect"}
+                                          switchToActiveChain={true}
+                                          modalSize={"wide"}
                                           welcomeScreen={{
-                                                title: 'Welcome To Micro Credit Portal',
-                                                subtitle: 'This portal made with 💙 by Solazan and Baran for MCT Project',
                                                 img: {
-                                                      src: '/mctLogo.png',
+                                                      src: "/mctLogo.png",
                                                       width: 300,
+                                                      height: 300,
                                                 },
+                                                title: "Welcome To Micro Credit Portal",
+                                                subtitle:
+                                                      "This portal made with 💙 by Solazan and Baran for MCT Project",
                                           }}
+                                          modalTitleIconUrl={"/mctLogo.png"}
+                                          privacyPolicyUrl={
+                                                "https://microcredittoken.com/privacy"
+                                          }
                                     />
                                     <button className="md:hidden" onClick={handleMobileNavbar}>
                                           <FiMenu className="w-10 h-auto" color="#173b62" />

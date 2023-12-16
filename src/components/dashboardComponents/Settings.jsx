@@ -9,7 +9,7 @@ const Settings = () => {
       const [password, setPassword] = useState('');
 
       const handleUpdateProfile = () => {
-            fetch(`http://localhost:3001/api/update-users/${userId}`, {
+            fetch(`http://193.17.4.100:3001/api/update-users/${userId}`, {
                   method: 'PUT',
                   headers: {
                         'Content-Type': 'application/json',

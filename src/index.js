@@ -3,8 +3,19 @@ import { createRoot } from "react-dom/client";
 import './index.css';
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { ThirdwebProvider } from "@thirdweb-dev/react";
+import {
+  ThirdwebProvider,
+  metamaskWallet,
+  localWallet,
+  embeddedWallet,
+  trustWallet,
+  smartWallet
+} from "@thirdweb-dev/react";
 
+const smartWalletOptions = {
+  factoryAddress: "0x513edc3ade31aad3d5238d4fccb6f3181358e6eb",
+  gasless: true,
+};
 
 const container = document.getElementById("root");
 const root = createRoot(container);
@@ -13,6 +24,32 @@ root.render(
     <ThirdwebProvider
       activeChain="binance-testnet"
       clientId={process.env.REACT_APP_TEMPLATE_CLIENT_ID}
+      supportedWallets={[
+        smartWallet(
+          metamaskWallet(),
+          smartWalletOptions,
+        ),
+        smartWallet(
+          localWallet(),
+          smartWalletOptions,
+        ),
+        smartWallet(
+          embeddedWallet({
+            auth: {
+              options: [
+                "google",
+                "apple",
+                "email",
+              ],
+            },
+          }),
+          smartWalletOptions,
+        ),
+        smartWallet(
+          trustWallet(),
+          smartWalletOptions,
+        ),
+      ]}
     >
       <App />
     </ThirdwebProvider>

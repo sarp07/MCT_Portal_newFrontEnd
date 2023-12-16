@@ -25,7 +25,7 @@ const Dashboard = ({ children }) => {
       const fetchUserInfo = () => {
             // Eğer token varsa, kullanıcının bilgilerini getir
             if (token) {
-                  fetch('http://localhost:3001/api/users', {
+                  fetch('http://193.17.4.100:3001/api/users', {
                         method: 'GET',
                         headers: {
                               'Content-Type': 'application/json',

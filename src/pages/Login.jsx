@@ -21,7 +21,7 @@ const Login = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        fetch(`http://localhost:3001/api/users?username=${values.username}&password=${values.password}`, {
+        fetch(`http://193.17.4.100:3001/api/users?username=${values.username}&password=${values.password}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
