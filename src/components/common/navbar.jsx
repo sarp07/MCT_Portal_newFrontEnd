@@ -20,7 +20,7 @@ const Navbar = () => {
       const formattedAddress = address ? `${address.slice(0, 5)}...${address.slice(-3)}` : '';
 
       useEffect(() => {
-            fetch('http://193.17.4.100:3001/api/users')
+            fetch('http://localhost:3001/api/users')
                   .then((response) => response.json())
                   .then((data) => setExistingData(data))
                   .catch((error) => console.error('Error fetching data:', error));
@@ -107,12 +107,12 @@ const Navbar = () => {
                                           welcomeScreen={{
                                                 img: {
                                                       src: "/mctLogo.png",
-                                                      width: 300,
-                                                      height: 300,
+                                                      width: 200,
+                                                      height: 200,
                                                 },
                                                 title: "Welcome To Micro Credit Portal",
                                                 subtitle:
-                                                      "This portal made with 💙 by Solazan and Baran for MCT Project",
+                                                      "This portal made with 💙 by Solazan and Baran for MCT Project. This DAPP running on Haq Network.",
                                           }}
                                           modalTitleIconUrl={"/mctLogo.png"}
                                           privacyPolicyUrl={

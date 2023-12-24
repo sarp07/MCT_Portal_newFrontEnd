@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Dashboard from '../../pages/Dashboard';
-import { ConnectWallet, useAddress, useContract, useTokenBalance } from "@thirdweb-dev/react";
+import {  useAddress, useContract, useTokenBalance } from "@thirdweb-dev/react";
 
 const Wallet = () => {
       const address = useAddress();

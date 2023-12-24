@@ -13,7 +13,7 @@ import {
 } from "@thirdweb-dev/react";
 
 const smartWalletOptions = {
-  factoryAddress: "0x513edc3ade31aad3d5238d4fccb6f3181358e6eb",
+  factoryAddress: "0xeFC4F98872fAC3B46E2BA473e3e1309d78a8505e",
   gasless: true,
 };
 
@@ -24,32 +24,32 @@ root.render(
     <ThirdwebProvider
       activeChain="binance-testnet"
       clientId={process.env.REACT_APP_TEMPLATE_CLIENT_ID}
-      supportedWallets={[
-        smartWallet(
-          metamaskWallet(),
-          smartWalletOptions,
-        ),
-        smartWallet(
-          localWallet(),
-          smartWalletOptions,
-        ),
-        smartWallet(
-          embeddedWallet({
-            auth: {
-              options: [
-                "google",
-                "apple",
-                "email",
-              ],
-            },
-          }),
-          smartWalletOptions,
-        ),
-        smartWallet(
-          trustWallet(),
-          smartWalletOptions,
-        ),
-      ]}
+    // supportedWallets={[
+    //   smartWallet(
+    //     metamaskWallet(),
+    //     smartWalletOptions,
+    //   ),
+    //   smartWallet(
+    //     localWallet(),
+    //     smartWalletOptions,
+    //   ),
+    //   smartWallet(
+    //     embeddedWallet({
+    //       auth: {
+    //         options: [
+    //           "google",
+    //           "apple",
+    //           "email",
+    //         ],
+    //       },
+    //     }),
+    //     smartWalletOptions,
+    //   ),
+    //   smartWallet(
+    //     trustWallet(),
+    //     smartWalletOptions,
+    //   ),
+    // ]}
     >
       <App />
     </ThirdwebProvider>

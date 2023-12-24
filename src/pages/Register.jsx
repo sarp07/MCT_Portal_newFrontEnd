@@ -37,7 +37,7 @@ const Register = () => {
                   type: getTypeForActiveForm(),
             };
 
-            fetch('http://193.17.4.100:3001/api/add-user', {
+            fetch('http://localhost:3001/api/add-user', {
                   method: 'POST',
                   headers: {
                         'Content-Type': 'application/json',

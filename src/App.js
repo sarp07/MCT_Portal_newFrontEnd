@@ -9,6 +9,8 @@ import Transactions from './components/dashboardComponents/Transactions';
 import Settings from './components/dashboardComponents/Settings';
 import Investment from './components/dashboardComponents/Investment';
 import { AuthProvider } from './AuthContext';
+import HomeOffice from './backoffice/HomeOffice';
+import Users from './backoffice/components/Users';
 
 export default function App() {
   return (
@@ -24,6 +26,8 @@ export default function App() {
           <Route path="/dashboard/transactions" element={<Transactions />} />
           <Route path="/dashboard/investment" element={<Investment />} />
           <Route path="/dashboard/settings" element={<Settings />} />
+          <Route path="/backoffice/dashobard" element={<HomeOffice />} />
+          <Route path="/backoffice/users" element={<Users />} />
         </Routes>
       </Router>
     </AuthProvider>
